@@ -19,17 +19,15 @@ class Suprematism(QMainWindow):
     def click(self):
         self.paint()
 
-    def ball(self, a):
-        self.qp.drawEllipse(QPoint(randint(0, self.size().width()), randint(0, self.size().height())), a / 2, a / 2)
-    
     def paintEvent(self, event):
         if self.do_paint:
-            self.qp = QPainter()
-            self.qp.begin(self)
+            qp = QPainter()
+            qp.begin(self)
             col = QColor(255,255,0)
-            self.qp.setBrush(col)
-            self.ball(randint(0, 1000))
-            self.qp.end()
+            qp.setBrush(col)
+            a = randint(0, 1000)
+            qp.drawEllipse(QPoint(randint(0, self.size().width()), randint(0, self.size().height())), a, a)
+            qp.end()
         self.do_paint = False
     
     def paint(self):
